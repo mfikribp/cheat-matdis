@@ -19,6 +19,21 @@ export const generateLCG = (
   n: number
 ): LCGResult[] => {
   const results: LCGResult[] = [];
+  
+  // Add seed (X0) as iteration 0
+  results.push({
+    iteration: 0,
+    currentX: x0,
+    nextX: x0,
+    multiplier: a,
+    increment: b,
+    modulus: m,
+    calculation: `X₀ = ${x0}`,
+    step2: `Nilai Awal (Seed)`,
+    step3: `Digunakan untuk menghitung X₁`,
+    step4: `X₀ = ${x0}`,
+  });
+
   let currentX = x0;
 
   for (let i = 1; i <= n; i++) {
