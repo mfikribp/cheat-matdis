@@ -305,8 +305,8 @@ export default function GrafPage({ onBack }: { onBack: () => void }) {
 
         {/* Dynamic Interactive Drawings */}
         <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-          {renderSVGGraph(layoutCircular, 'Graf A (Tata Letak Melingkar - Circular)')}
-          {renderSVGGraph(layoutIsomorphic, 'Graf B (Tata Letak Bintang - Isomorfik)')}
+          {renderSVGGraph(layoutCircular, 'Graf A ')}
+          {renderSVGGraph(layoutIsomorphic, 'Graf B ')}
         </section>
 
         {/* Proof & Details Panel */}

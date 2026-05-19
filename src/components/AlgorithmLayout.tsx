@@ -67,7 +67,7 @@ export default function AlgorithmLayout({ title, subtitle, color, onBack, pdfUrl
       </header>
       {children}
       <footer style={{ marginTop: '4rem', textAlign: 'center', color: '#475569', paddingBottom: '2rem', fontSize: '0.875rem' }}>
-        <p>Jangan dieriusin, buat seru-seruan aja</p>
+        <p>Jangan diseriusin, buat seru-seruan aja</p>
       </footer>
     </div>
   )

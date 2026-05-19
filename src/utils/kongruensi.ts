@@ -58,3 +58,120 @@ export function solveKongruensi(a: number, b: number, m: number): KongruensiResu
 
   return { a, b, m, gcd: d, hasSolution: true, numSolutions: d, solutions, steps };
 }
+
+export interface SystemKongruensiResult {
+  hasSolution: boolean;
+  solution: number;
+  modulus: number;
+  steps: string[];
+  equations: { a: number; m: number }[];
+}
+
+export function solveSystemKongruensi(
+  eqs: { a: number; m: number }[]
+): SystemKongruensiResult {
+  const steps: string[] = [];
+  steps.push(`Sistem Kekongruenan Linier yang diberikan:`);
+  eqs.forEach((eq, idx) => {
+    steps.push(`(${idx + 1})  x ≡ ${eq.a} (mod ${eq.m})`);
+  });
+
+  if (eqs.length < 2) {
+    return {
+      hasSolution: false,
+      solution: 0,
+      modulus: 0,
+      steps: [...steps, `Error: Sistem harus memiliki minimal 2 persamaan.`],
+      equations: eqs
+    };
+  }
+
+  // Solve pairwise using substitution method
+  let currentA = ((eqs[0].a % eqs[0].m) + eqs[0].m) % eqs[0].m;
+  let currentM = eqs[0].m;
+
+  for (let i = 1; i < eqs.length; i++) {
+    const nextA = ((eqs[i].a % eqs[i].m) + eqs[i].m) % eqs[i].m;
+    const nextM = eqs[i].m;
+
+    steps.push(`\n--- Menyelesaikan pasangan persamaan:`);
+    steps.push(`[i]   x ≡ ${currentA} (mod ${currentM})`);
+    steps.push(`[ii]  x ≡ ${nextA} (mod ${nextM})`);
+
+    steps.push(`Langkah 1: Tulis persamaan pertama sebagai:`);
+    steps.push(`   x = ${currentA} + ${currentM}k₁  ...(iii)`);
+
+    steps.push(`Langkah 2: Substitusikan (iii) ke dalam persamaan kedua:`);
+    steps.push(`   ${currentA} + ${currentM}k₁ ≡ ${nextA} (mod ${nextM})`);
+    
+    const diff = ((nextA - currentA) % nextM + nextM) % nextM;
+    steps.push(`   ${currentM}k₁ ≡ ${diff} (mod ${nextM})`);
+
+    const g = gcd(currentM, nextM);
+    if (diff % g !== 0) {
+      steps.push(`Langkah 3: Karena GCD(${currentM}, ${nextM}) = ${g} tidak membagi ${diff}, SISTEM TIDAK MEMILIKI SOLUSI.`);
+      return {
+        hasSolution: false,
+        solution: 0,
+        modulus: 0,
+        steps,
+        equations: eqs
+      };
+    }
+
+    steps.push(`   Karena GCD(${currentM}, ${nextM}) = ${g} membagi ${diff}, solusi untuk k₁ dijamin ada.`);
+
+    const reducedM = currentM / g;
+    const reducedDiff = diff / g;
+    const reducedMod = nextM / g;
+    
+    if (g > 1) {
+      steps.push(`   Sederhanakan persamaan dengan membagi ${g} → ${reducedM}k₁ ≡ ${reducedDiff} (mod ${reducedMod})`);
+    }
+
+    const { x: inv } = extGCD(((reducedM % reducedMod) + reducedMod) % reducedMod, reducedMod);
+    const modInv = (inv % reducedMod + reducedMod) % reducedMod;
+    
+    steps.push(`   Invers perkalian dari ${reducedM} modulo ${reducedMod} adalah ${modInv} (karena ${reducedM} × ${modInv} = ${reducedM * modInv} ≡ 1 mod ${reducedMod})`);
+
+    const k0 = (reducedDiff * modInv) % reducedMod;
+    steps.push(`   Sehingga diperoleh: k₁ ≡ ${reducedDiff} × ${modInv} ≡ ${k0} (mod ${reducedMod})`);
+    steps.push(`   Dapat ditulis sebagai: k₁ = ${k0} + ${reducedMod}k₂  ...(iv)`);
+
+    steps.push(`Langkah 3: Substitusikan k₁ kembali ke persamaan (iii):`);
+    steps.push(`   x = ${currentA} + ${currentM}(${k0} + ${reducedMod}k₂)`);
+    
+    const newA = currentA + currentM * k0;
+    const newM = currentM * reducedMod;
+    steps.push(`   x = ${currentA} + ${currentM * k0} + ${newM}k₂`);
+    steps.push(`   x = ${newA} + ${newM}k₂`);
+    steps.push(`   x ≡ ${newA} (mod ${newM})`);
+
+    currentA = ((newA % newM) + newM) % newM;
+    currentM = newM;
+  }
+
+  steps.push(`\n==================================================`);
+  steps.push(`Solusi Umum Sistem Kekongruenan Linier:`);
+  steps.push(`   x ≡ ${currentA} (mod ${currentM})`);
+  steps.push(`\nHimpunan Solusi Positif:`);
+  
+  const solList: number[] = [];
+  for (let s = 0; s < 4; s++) {
+    solList.push(currentA + s * currentM);
+  }
+  steps.push(`   x = ${solList.join(', ')}, ...`);
+  steps.push(`\nVerifikasi solusi x = ${currentA}:`);
+  eqs.forEach((eq, idx) => {
+    const rem = currentA % eq.m;
+    steps.push(`   Persamaan (${idx + 1}): ${currentA} mod ${eq.m} = ${rem} (Sesuai sisa ${eq.a}) ${rem === (eq.a % eq.m) ? '✓' : '✗'}`);
+  });
+
+  return {
+    hasSolution: true,
+    solution: currentA,
+    modulus: currentM,
+    steps,
+    equations: eqs
+  };
+}
