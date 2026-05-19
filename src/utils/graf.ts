@@ -164,7 +164,6 @@ export function getIsomorphicLayout(
  * Returns the mapping function f(v_i) = u_j for the isomorphism mapping
  */
 export function getIsomorphismMapping(size: number): { from: string; to: string }[] {
-  const perm = PERMUTATIONS[size] || Array.from({ length: size }, (_, i) => i);
   // Simpul v_i di petakan ke u_j berdasarkan posisinya
   return Array.from({ length: size }, (_, i) => {
     return {
