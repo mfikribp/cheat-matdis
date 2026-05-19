@@ -2,6 +2,7 @@ type PageId =
   | 'home'
   | 'lcg'
   | 'kongruensi'
+  | 'euclidean'
 
 interface Algorithm {
   id: PageId
@@ -32,6 +33,17 @@ const categories: Category[] = [
     icon: '🔢',
     slide: 'Slide 15–17',
     algorithms: [
+      {
+        id: 'euclidean',
+        title: 'Algoritma Euclidean (PBB)',
+        shortTitle: 'PBB/GCD',
+        desc: 'Mencari Pembagi Bersama Terbesar (PBB) menggunakan Algoritma Euclid.',
+        formula: 'PBB(m, n) = PBB(n, m mod n)',
+        color: '#34d399, #059669',
+        tags: ['Euclidean', 'Teori Bilangan'],
+        slide: 'Slide 15',
+        example: 'Tentukan PBB (FPB) dari 252 dan 198.',
+      },
       {
         id: 'kongruensi',
         title: 'Kongruensi Linier',

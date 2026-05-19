@@ -3,6 +3,7 @@ import './index.css'
 import HomePage, { type PageId } from './components/HomePage'
 import LCGPage from './pages/LCGPage'
 import KongruensiPage from './pages/KongruensiPage'
+import EuclideanPage from './pages/EuclideanPage'
 
 function App() {
   const [page, setPage] = useState<PageId>('home')
@@ -13,6 +14,7 @@ function App() {
       {page === 'home'        && <HomePage onNavigate={setPage} />}
       {page === 'lcg'         && <LCGPage onBack={goHome} />}
       {page === 'kongruensi'  && <KongruensiPage onBack={goHome} />}
+      {page === 'euclidean'   && <EuclideanPage onBack={goHome} />}
     </>
   )
 }
