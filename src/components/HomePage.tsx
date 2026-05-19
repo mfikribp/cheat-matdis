@@ -1,8 +1,7 @@
 type PageId =
   | 'home'
-  | 'lcg' | 'permutasi' | 'kombinasi' | 'gcd' | 'modular'
-  | 'sieve' | 'fibonacci' | 'pigeonhole'
-  | 'kongruensi' | 'binomial' | 'rekurensi' | 'graf'
+  | 'lcg'
+  | 'kongruensi'
 
 interface Algorithm {
   id: PageId
@@ -34,39 +33,6 @@ const categories: Category[] = [
     slide: 'Slide 15–17',
     algorithms: [
       {
-        id: 'gcd',
-        title: 'GCD & LCM (Euclidean)',
-        shortTitle: 'GCD/LCM',
-        desc: 'Mencari FPB dan KPK menggunakan Algoritma Euclid.',
-        formula: 'GCD(a,b) = GCD(b, a mod b)',
-        color: '#34d399, #059669',
-        tags: ['Teori Bilangan', 'Euclidean'],
-        slide: 'Slide 15',
-        example: 'Tentukan FPB dan KPK dari 252 dan 198.',
-      },
-      {
-        id: 'sieve',
-        title: 'Sieve of Eratosthenes',
-        shortTitle: 'Saringan Prima',
-        desc: 'Mencari semua bilangan prima hingga N dengan visualisasi eliminasi.',
-        formula: '∀p prima: coret 2p, 3p, 4p, …',
-        color: '#fbbf24, #d97706',
-        tags: ['Bilangan Prima', 'Visualisasi'],
-        slide: 'Slide 15',
-        example: 'Temukan semua bilangan prima antara 1 dan 200.',
-      },
-      {
-        id: 'modular',
-        title: 'Modular Arithmetic',
-        shortTitle: 'Mod Arith',
-        desc: 'Eksponen modular cepat dan invers modular dengan Extended Euclidean.',
-        formula: 'aᵉ mod m · a⁻¹ mod m',
-        color: '#fb923c, #ea580c',
-        tags: ['Kriptografi', 'Teori Bilangan'],
-        slide: 'Slide 16',
-        example: 'Hitung 3^644 mod 645. Cari invers 7 mod 26.',
-      },
-      {
         id: 'kongruensi',
         title: 'Kongruensi Linier',
         shortTitle: 'ax ≡ b mod m',
@@ -80,83 +46,10 @@ const categories: Category[] = [
     ],
   },
   {
-    label: 'Kombinatorika',
-    icon: '📊',
-    slide: 'Slide 18–19',
-    algorithms: [
-      {
-        id: 'permutasi',
-        title: 'Permutasi',
-        shortTitle: 'P(n,r)',
-        desc: 'Menghitung jumlah susunan r objek dari n objek.',
-        formula: 'P(n,r) = n! / (n−r)!',
-        color: '#a78bfa, #7c3aed',
-        tags: ['Counting', 'Factorial'],
-        slide: 'Slide 18',
-        example: 'Berapa kata 9 huruf dari 26 huruf (a) tanpa & (b) dengan pengulangan?',
-      },
-      {
-        id: 'kombinasi',
-        title: 'Kombinasi',
-        shortTitle: 'C(n,r)',
-        desc: 'Menghitung pemilihan r objek dari n tanpa memperhatikan urutan.',
-        formula: 'C(n,r) = n! / (r! · (n−r)!)',
-        color: '#f472b6, #db2777',
-        tags: ['Counting', 'Factorial'],
-        slide: 'Slide 18',
-        example: 'Dari 10 orang dipilih 3 sebagai panitia. Ada berapa cara?',
-      },
-      {
-        id: 'binomial',
-        title: 'Koefisien Binomial',
-        shortTitle: 'Binomial',
-        desc: 'Segitiga Pascal dan koefisien ekspansi (x+y)ⁿ.',
-        formula: 'C(n,k) — baris ke-n Segitiga Pascal',
-        color: '#4ade80, #16a34a',
-        tags: ['Pascal', 'Ekspansi'],
-        slide: 'Slide 19',
-        example: 'Berapa koefisien x⁵ dalam ekspansi (x+2)⁸?',
-      },
-      {
-        id: 'pigeonhole',
-        title: 'Pigeonhole Principle',
-        shortTitle: 'Pigeonhole',
-        desc: 'Kalkulator prinsip sangkar merpati untuk pembuktian eksistensi.',
-        formula: '⌈n/k⌉ merpati per kandang',
-        color: '#f87171, #dc2626',
-        tags: ['Kombinatorika', 'Bukti'],
-        slide: 'Slide 19',
-        example: 'Jika 13 buku diletakkan di 12 rak, pasti ada rak dengan ≥ 2 buku.',
-      },
-    ],
-  },
-  {
     label: 'Barisan & Rekursi',
     icon: '🔁',
     slide: 'Slide 10–11',
     algorithms: [
-      {
-        id: 'fibonacci',
-        title: 'Barisan Fibonacci',
-        shortTitle: 'Fibonacci',
-        desc: 'Menghasilkan barisan Fibonacci langkah per langkah.',
-        formula: 'F(n) = F(n−1) + F(n−2)',
-        color: '#22d3ee, #0891b2',
-        tags: ['Barisan', 'Rekursi'],
-        slide: 'Slide 10',
-        example: 'Hitung F(0) hingga F(10). Berapakah F(10)?',
-      },
-      {
-        id: 'rekurensi',
-        title: 'Relasi Rekurensi',
-        shortTitle: 'Rekurensi',
-        desc: 'Solusi aₙ = p·aₙ₋₁ + q·aₙ₋₂ dengan persamaan karakteristik.',
-        formula: 'aₙ = p·aₙ₋₁ + q·aₙ₋₂',
-        color: '#38bdf8, #0284c7',
-        tags: ['Rekurensi', 'Karakteristik'],
-        slide: 'Slide 11',
-        example: 'Tentukan solusi aₙ = 3aₙ₋₁ − 2aₙ₋₂, a₀=1, a₁=3.',
-      },
       {
         id: 'lcg',
         title: 'Linear Congruential Generator',
@@ -167,24 +60,6 @@ const categories: Category[] = [
         tags: ['Randomness', 'Modular'],
         slide: 'Slide 17',
         example: 'Bangkitkan 10 bilangan acak: X₀=3, a=9, b=13, m=19.',
-      },
-    ],
-  },
-  {
-    label: 'Graf & Pohon',
-    icon: '🌐',
-    slide: 'Slide 20–24',
-    algorithms: [
-      {
-        id: 'graf',
-        title: 'Analisis Graf',
-        shortTitle: 'Graf',
-        desc: 'Derajat vertex, Handshaking Lemma, Euler Path dan Circuit.',
-        formula: 'Σ deg(v) = 2|E|',
-        color: '#a3e635, #65a30d',
-        tags: ['Graf', 'Euler', 'Handshaking'],
-        slide: 'Slide 20',
-        example: 'Buktikan Handshaking Lemma. Apakah graf memiliki Euler circuit?',
       },
     ],
   },
