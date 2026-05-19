@@ -5,6 +5,7 @@ type PageId =
   | 'lcg'
   | 'kongruensi'
   | 'euclidean'
+  | 'relasi'
 
 interface Algorithm {
   id: PageId
@@ -90,6 +91,36 @@ const categories: Category[] = [
         example: 'Bangkitkan 10 bilangan acak: X₀=3, a=9, b=13, m=19.',
         pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/17-Teori-Bilangan-Bagian3-2024.pdf#page=17',
         pdfPageLabel: 'Hal. 17',
+      },
+    ],
+  },
+  {
+    label: 'Relasi & Fungsi',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#06b6d4' }}>
+        <circle cx="6" cy="6" r="3" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="6" r="3" />
+        <circle cx="18" cy="18" r="3" />
+        <line x1="9" y1="6" x2="15" y2="6" />
+        <line x1="9" y1="18" x2="15" y2="18" />
+        <line x1="9" y1="6" x2="15" y2="18" />
+        <line x1="9" y1="18" x2="15" y2="6" />
+      </svg>
+    ),
+    algorithms: [
+      {
+        id: 'relasi',
+        title: 'Operasi Matriks Relasi',
+        shortTitle: 'Relasi & Komposisi',
+        desc: 'Selesaikan gabungan, irisan, dan perkalian Boolean komposisi relasi.',
+        formula: 'R ∪ S, R ∩ S, R ◦ S, S ◦ R',
+        color: '#06b6d4, #0891b2',
+        tags: ['Relasi', 'Komposisi'],
+        slide: 'Slide 16',
+        example: 'R = [1 1 1; 1 0 0; 0 0 0], S = [1 1 0; 0 1 1; 0 0 1]. Tentukan R o S.',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/05-Relasi-dan-Fungsi-Bagian1-(2024).pdf#page=16',
+        pdfPageLabel: 'Hal. 16',
       },
     ],
   },
@@ -206,7 +237,7 @@ export default function HomePage({ onNavigate }: Props) {
       ))}
 
       <footer style={{ marginTop: '4rem', textAlign: 'center', color: '#334155', paddingBottom: '2rem', fontSize: '0.8rem' }}>
-        <p>© 2026 DiskreMath · Berdasarkan Silabus IF1220 ITB 2024-2025 · Rinaldi Munir</p>
+        <p>Jangan terlalu diiniin lah apasih namanya</p>
       </footer>
     </div>
   )

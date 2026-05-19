@@ -23,9 +23,9 @@ export default function AlgorithmLayout({ title, subtitle, color, onBack, pdfUrl
           </button>
 
           {pdfUrl && (
-            <a 
-              href={pdfUrl} 
-              target="_blank" 
+            <a
+              href={pdfUrl}
+              target="_blank"
               rel="noopener noreferrer"
               style={{
                 display: 'inline-flex',
@@ -67,7 +67,7 @@ export default function AlgorithmLayout({ title, subtitle, color, onBack, pdfUrl
       </header>
       {children}
       <footer style={{ marginTop: '4rem', textAlign: 'center', color: '#475569', paddingBottom: '2rem', fontSize: '0.875rem' }}>
-        <p>© 2026 DiskreMath · Matematika Diskrit Interactive Hub</p>
+        <p>Jangan dieriusin, buat seru-seruan aja</p>
       </footer>
     </div>
   )
