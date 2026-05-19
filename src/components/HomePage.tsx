@@ -140,7 +140,7 @@ export default function HomePage({ onNavigate }: Props) {
 
                 {/* Example problem */}
                 <div className="algo-example">
-                  <span className="algo-example-label">📝 Contoh soal:</span>
+                  <span className="algo-example-label"> Contoh soal:</span>
                   <span className="algo-example-text">{algo.example}</span>
                 </div>
 
