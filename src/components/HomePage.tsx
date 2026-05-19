@@ -6,6 +6,7 @@ type PageId =
   | 'kongruensi'
   | 'euclidean'
   | 'relasi'
+  | 'graf'
 
 interface Algorithm {
   id: PageId
@@ -35,7 +36,7 @@ const categories: Category[] = [
   {
     label: 'Teori Bilangan',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#e879f9' }}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#854d0e' }}>
         <line x1="4" y1="9" x2="20" y2="9" />
         <line x1="4" y1="15" x2="20" y2="15" />
         <line x1="9" y1="4" x2="9" y2="20" />
@@ -49,7 +50,7 @@ const categories: Category[] = [
         shortTitle: 'PBB/GCD',
         desc: 'Mencari Pembagi Bersama Terbesar (PBB) menggunakan Algoritma Euclid.',
         formula: 'PBB(m, n) = PBB(n, m mod n)',
-        color: '#34d399, #059669',
+        color: '#166534, #15803d',
         tags: ['Euclidean', 'Teori Bilangan'],
         slide: 'Slide 15',
         example: 'Tentukan PBB (FPB) dari 252 dan 198.',
@@ -62,7 +63,7 @@ const categories: Category[] = [
         shortTitle: 'ax ≡ b mod m',
         desc: 'Selesaikan persamaan kongruensi linier ax ≡ b (mod m).',
         formula: 'ax ≡ b (mod m)',
-        color: '#e879f9, #a21caf',
+        color: '#9f1239, #be123c',
         tags: ['Kongruensi', 'Teori Bilangan'],
         slide: 'Slide 16',
         example: 'Selesaikan 3x ≡ 6 (mod 9). Ada berapa solusi?',
@@ -74,7 +75,7 @@ const categories: Category[] = [
   {
     label: 'Barisan & Rekursi',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#60a5fa' }}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0f766e' }}>
         <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4Z" />
       </svg>
     ),
@@ -85,7 +86,7 @@ const categories: Category[] = [
         shortTitle: 'LCG',
         desc: 'Generator bilangan acak semu menggunakan rumus rekursif modular.',
         formula: 'Xₙ = (a·Xₙ₋₁ + b) mod m',
-        color: '#60a5fa, #3b82f6',
+        color: '#0f766e, #115e59',
         tags: ['Randomness', 'Modular'],
         slide: 'Slide 17',
         example: 'Bangkitkan 10 bilangan acak: X₀=3, a=9, b=13, m=19.',
@@ -97,7 +98,7 @@ const categories: Category[] = [
   {
     label: 'Relasi & Fungsi',
     icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#06b6d4' }}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#a16207' }}>
         <circle cx="6" cy="6" r="3" />
         <circle cx="6" cy="18" r="3" />
         <circle cx="18" cy="6" r="3" />
@@ -115,12 +116,40 @@ const categories: Category[] = [
         shortTitle: 'Relasi & Komposisi',
         desc: 'Selesaikan gabungan, irisan, dan perkalian Boolean komposisi relasi.',
         formula: 'R ∪ S, R ∩ S, R ◦ S, S ◦ R',
-        color: '#06b6d4, #0891b2',
+        color: '#a16207, #b45309',
         tags: ['Relasi', 'Komposisi'],
         slide: 'Slide 16',
         example: 'R = [1 1 1; 1 0 0; 0 0 0], S = [1 1 0; 0 1 1; 0 0 1]. Tentukan R o S.',
         pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/05-Relasi-dan-Fungsi-Bagian1-(2024).pdf#page=16',
         pdfPageLabel: 'Hal. 16',
+      },
+    ],
+  },
+  {
+    label: 'Graf & Pohon',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#c2410c' }}>
+        <circle cx="12" cy="5" r="3" />
+        <circle cx="5" cy="18" r="3" />
+        <circle cx="19" cy="18" r="3" />
+        <line x1="12" y1="8" x2="6.5" y2="15.5" />
+        <line x1="12" y1="8" x2="17.5" y2="15.5" />
+        <line x1="8" y1="18" x2="16" y2="18" />
+      </svg>
+    ),
+    algorithms: [
+      {
+        id: 'graf',
+        title: 'Graf Isomorfik & Derajat',
+        shortTitle: 'Graf',
+        desc: 'Analisis derajat simpul undirected dan visualisasikan dua bentuk graf yang isomorfik.',
+        formula: 'Isomorfik: G₁ ≅ G₂',
+        color: '#c2410c, #ea580c',
+        tags: ['Graf', 'Isomorfik'],
+        slide: 'Slide 48',
+        example: 'Gambarkan dua buah graf isomorfik yang bersesuaian dengan matriks 5x5 Anda.',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/20-Graf-Bagian1-2024.pdf#page=48',
+        pdfPageLabel: 'Hal. 48',
       },
     ],
   },
@@ -196,22 +225,22 @@ export default function HomePage({ onNavigate }: Props) {
                       alignItems: 'center',
                       gap: '0.4rem',
                       fontSize: '0.75rem',
-                      color: '#38bdf8',
+                      color: '#854d0e',
                       textDecoration: 'none',
                       fontWeight: 600,
-                      background: 'rgba(56, 189, 248, 0.08)',
-                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      background: 'rgba(133, 77, 14, 0.06)',
+                      border: '1px solid rgba(133, 77, 14, 0.15)',
                       padding: '0.35rem 0.75rem',
                       borderRadius: '8px',
                       transition: 'all 0.2s',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(56, 189, 248, 0.15)'
-                      e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)'
+                      e.currentTarget.style.background = 'rgba(133, 77, 14, 0.12)'
+                      e.currentTarget.style.borderColor = 'rgba(133, 77, 14, 0.3)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(56, 189, 248, 0.08)'
-                      e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.2)'
+                      e.currentTarget.style.background = 'rgba(133, 77, 14, 0.06)'
+                      e.currentTarget.style.borderColor = 'rgba(133, 77, 14, 0.15)'
                     }}
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -236,7 +265,7 @@ export default function HomePage({ onNavigate }: Props) {
         </section>
       ))}
 
-      <footer style={{ marginTop: '4rem', textAlign: 'center', color: '#334155', paddingBottom: '2rem', fontSize: '0.8rem' }}>
+      <footer style={{ marginTop: '4rem', textAlign: 'center', color: '#706b64', paddingBottom: '2rem', fontSize: '0.8rem' }}>
         <p>Jangan terlalu diiniin lah apasih namanya</p>
       </footer>
     </div>

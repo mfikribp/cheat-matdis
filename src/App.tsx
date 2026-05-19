@@ -5,6 +5,7 @@ import LCGPage from './pages/LCGPage'
 import KongruensiPage from './pages/KongruensiPage'
 import EuclideanPage from './pages/EuclideanPage'
 import RelasiPage from './pages/RelasiPage'
+import GrafPage from './pages/GrafPage'
 
 function App() {
   const [page, setPage] = useState<PageId>('home')
@@ -17,6 +18,7 @@ function App() {
       {page === 'kongruensi'  && <KongruensiPage onBack={goHome} />}
       {page === 'euclidean'   && <EuclideanPage onBack={goHome} />}
       {page === 'relasi'      && <RelasiPage onBack={goHome} />}
+      {page === 'graf'        && <GrafPage onBack={goHome} />}
     </>
   )
 }
