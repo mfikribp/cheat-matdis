@@ -77,6 +77,26 @@ export function getCircularLayout(
 ): GraphNode[] {
   const size = matrix.length;
   const degrees = getVertexDegrees(matrix);
+
+  // Exact rectangular coordinates matching the slide for N=5
+  if (size === 5) {
+    const coords = [
+      { x: cx - 110, y: cy - 60 }, // v1 (Top-Left)
+      { x: cx,       y: cy - 60 }, // v2 (Top-Middle)
+      { x: cx + 110, y: cy - 60 }, // v3 (Top-Right)
+      { x: cx + 110, y: cy + 60 }, // v4 (Bottom-Right)
+      { x: cx - 110, y: cy + 60 }  // v5 (Bottom-Left)
+    ];
+    return coords.map((c, i) => ({
+      index: i,
+      label: `v${i + 1}`,
+      degree: degrees[i],
+      hasLoop: matrix[i][i] === 1,
+      x: c.x,
+      y: c.y
+    }));
+  }
+
   return Array(size)
     .fill(0)
     .map((_, i) => {
@@ -103,8 +123,27 @@ export function getIsomorphicLayout(
 ): GraphNode[] {
   const size = matrix.length;
   const degrees = getVertexDegrees(matrix);
+
+  // Exact fan/pyramid coordinates matching the slide for N=5
+  if (size === 5) {
+    const coords = [
+      { x: cx - 120, y: cy + 30 }, // u1 (Bottom-Left-most)
+      { x: cx,       y: cy - 80 }, // u2 (Top peak)
+      { x: cx + 120, y: cy + 30 }, // u3 (Bottom-Right-most)
+      { x: cx + 40,  y: cy + 80 }, // u4 (Bottom-Middle-Right)
+      { x: cx - 40,  y: cy + 80 }  // u5 (Bottom-Middle-Left)
+    ];
+    return coords.map((c, i) => ({
+      index: i,
+      label: `u${i + 1}`,
+      degree: degrees[i],
+      hasLoop: matrix[i][i] === 1,
+      x: c.x,
+      y: c.y
+    }));
+  }
+
   const perm = PERMUTATIONS[size] || Array.from({ length: size }, (_, i) => i);
-  
   return Array(size)
     .fill(0)
     .map((_, i) => {
