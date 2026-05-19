@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 type PageId =
   | 'home'
   | 'lcg'
@@ -14,12 +16,13 @@ interface Algorithm {
   tags: string[]
   slide: string
   example: string
+  pdfUrl: string
+  pdfPageLabel: string
 }
 
 interface Category {
   label: string
-  icon: string
-  slide: string
+  icon: ReactNode
   algorithms: Algorithm[]
 }
 
@@ -30,8 +33,14 @@ interface Props {
 const categories: Category[] = [
   {
     label: 'Teori Bilangan',
-    icon: '🔢',
-    slide: 'Slide 15–17',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#e879f9' }}>
+        <line x1="4" y1="9" x2="20" y2="9" />
+        <line x1="4" y1="15" x2="20" y2="15" />
+        <line x1="9" y1="4" x2="9" y2="20" />
+        <line x1="15" y1="4" x2="15" y2="20" />
+      </svg>
+    ),
     algorithms: [
       {
         id: 'euclidean',
@@ -43,6 +52,8 @@ const categories: Category[] = [
         tags: ['Euclidean', 'Teori Bilangan'],
         slide: 'Slide 15',
         example: 'Tentukan PBB (FPB) dari 252 dan 198.',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/15-Teori-Bilangan-Bagian1-2024.pdf#page=15',
+        pdfPageLabel: 'Hal. 15',
       },
       {
         id: 'kongruensi',
@@ -54,13 +65,18 @@ const categories: Category[] = [
         tags: ['Kongruensi', 'Teori Bilangan'],
         slide: 'Slide 16',
         example: 'Selesaikan 3x ≡ 6 (mod 9). Ada berapa solusi?',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/16-Teori-Bilangan-Bagian2-2024.pdf#page=12',
+        pdfPageLabel: 'Hal. 12',
       },
     ],
   },
   {
     label: 'Barisan & Rekursi',
-    icon: '🔁',
-    slide: 'Slide 10–11',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#60a5fa' }}>
+        <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4Z" />
+      </svg>
+    ),
     algorithms: [
       {
         id: 'lcg',
@@ -72,6 +88,8 @@ const categories: Category[] = [
         tags: ['Randomness', 'Modular'],
         slide: 'Slide 17',
         example: 'Bangkitkan 10 bilangan acak: X₀=3, a=9, b=13, m=19.',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/17-Teori-Bilangan-Bagian3-2024.pdf#page=17',
+        pdfPageLabel: 'Hal. 17',
       },
     ],
   },
@@ -84,15 +102,10 @@ export default function HomePage({ onNavigate }: Props) {
   return (
     <div className="container">
       <header className="home-header">
-        <div className="home-badge">IF1220 Matematika Diskrit · ITB 2024-2025</div>
         <h1 className="home-title">
-          <span className="gradient-text-blue">Diskre</span>
-          <span className="gradient-text-purple">Math</span>
+          <span className="gradient-text-blue">Semoga Nilai Ku </span>
+          <span className="gradient-text-purple">A</span>
         </h1>
-        <p className="home-subtitle">
-          Kalkulator interaktif berbasis silabus IF1220 ITB.<br />
-          Setiap menu dilengkapi contoh soal — pilih yang sesuai!
-        </p>
       </header>
 
       {categories.map((cat) => (
@@ -101,7 +114,6 @@ export default function HomePage({ onNavigate }: Props) {
             <span className="category-icon">{cat.icon}</span>
             <div>
               <h2 className="category-title">{cat.label}</h2>
-              <span className="category-slide">{cat.slide}</span>
             </div>
           </div>
           <div className="algo-grid">
@@ -130,6 +142,55 @@ export default function HomePage({ onNavigate }: Props) {
                 <div className="algo-example">
                   <span className="algo-example-label">📝 Contoh soal:</span>
                   <span className="algo-example-text">{algo.example}</span>
+                </div>
+
+                {/* PDF Link Button */}
+                <div
+                  className="algo-pdf-link"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                  }}
+                  style={{
+                    marginTop: '0.75rem',
+                    position: 'relative',
+                    zIndex: 2,
+                  }}
+                >
+                  <a
+                    href={algo.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      fontSize: '0.75rem',
+                      color: '#38bdf8',
+                      textDecoration: 'none',
+                      fontWeight: 600,
+                      background: 'rgba(56, 189, 248, 0.08)',
+                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      padding: '0.35rem 0.75rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(56, 189, 248, 0.15)'
+                      e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(56, 189, 248, 0.08)'
+                      e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.2)'
+                    }}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" y1="13" x2="8" y2="13" />
+                      <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    <span>PDF Materi ({algo.pdfPageLabel})</span>
+                  </a>
                 </div>
 
                 <div className="algo-card-arrow">

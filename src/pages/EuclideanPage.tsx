@@ -25,6 +25,8 @@ export default function EuclideanPage({ onBack }: Props) {
       subtitle="Mencari Pembagi Bersama Terbesar (PBB/GCD) dengan modulasi berulang."
       color="#34d399, #059669"
       onBack={onBack}
+      pdfUrl="https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/15-Teori-Bilangan-Bagian1-2024.pdf#page=15"
+      pdfLabel="PDF Slide 15"
     >
       <div className="algo-grid-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
         

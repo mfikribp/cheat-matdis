@@ -25,6 +25,8 @@ export default function LCGPage({ onBack }: Props) {
       subtitle="Generator bilangan acak semu: Xₙ = (a·Xₙ₋₁ + b) mod m"
       color="#60a5fa, #3b82f6"
       onBack={onBack}
+      pdfUrl="https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/17-Teori-Bilangan-Bagian3-2024.pdf#page=17"
+      pdfLabel="PDF Slide 17"
     >
       <main className="glass-card">
         <div className="input-grid">

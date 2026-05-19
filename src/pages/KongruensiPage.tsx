@@ -20,6 +20,8 @@ export default function KongruensiPage({ onBack }: Props) {
       subtitle="Selesaikan persamaan ax ≡ b (mod m) — Teori Bilangan Bag.2"
       color="#e879f9, #a21caf"
       onBack={onBack}
+      pdfUrl="https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/16-Teori-Bilangan-Bagian2-2024.pdf#page=12"
+      pdfLabel="PDF Slide 12"
     >
       <main className="glass-card">
         <p className="card-formula">ax ≡ b (mod m)</p>
