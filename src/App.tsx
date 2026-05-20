@@ -6,6 +6,7 @@ import KongruensiPage from './pages/KongruensiPage'
 import EuclideanPage from './pages/EuclideanPage'
 import RelasiPage from './pages/RelasiPage'
 import GrafPage from './pages/GrafPage'
+import RelatifPrimaPage from './pages/RelatifPrimaPage'
 
 function App() {
   const [page, setPage] = useState<PageId>('home')
@@ -13,12 +14,13 @@ function App() {
 
   return (
     <>
-      {page === 'home'        && <HomePage onNavigate={setPage} />}
-      {page === 'lcg'         && <LCGPage onBack={goHome} />}
-      {page === 'kongruensi'  && <KongruensiPage onBack={goHome} />}
-      {page === 'euclidean'   && <EuclideanPage onBack={goHome} />}
-      {page === 'relasi'      && <RelasiPage onBack={goHome} />}
-      {page === 'graf'        && <GrafPage onBack={goHome} />}
+      {page === 'home'         && <HomePage onNavigate={setPage} />}
+      {page === 'lcg'          && <LCGPage onBack={goHome} />}
+      {page === 'kongruensi'   && <KongruensiPage onBack={goHome} />}
+      {page === 'euclidean'    && <EuclideanPage onBack={goHome} />}
+      {page === 'relasi'       && <RelasiPage onBack={goHome} />}
+      {page === 'graf'         && <GrafPage onBack={goHome} />}
+      {page === 'relatifPrima' && <RelatifPrimaPage onBack={goHome} />}
     </>
   )
 }

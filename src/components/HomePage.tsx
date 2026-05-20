@@ -7,6 +7,7 @@ type PageId =
   | 'euclidean'
   | 'relasi'
   | 'graf'
+  | 'relatifPrima'
 
 interface Algorithm {
   id: PageId
@@ -68,6 +69,19 @@ const categories: Category[] = [
         slide: 'Slide 16',
         example: 'Selesaikan 3x ≡ 6 (mod 9). Ada berapa solusi?',
         pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/16-Teori-Bilangan-Bagian2-2024.pdf#page=12',
+        pdfPageLabel: 'Hal. 12',
+      },
+      {
+        id: 'relatifPrima',
+        title: 'Relatif Prima (Coprime)',
+        shortTitle: 'PBB(a, b) = 1',
+        desc: 'Tentukan pasangan bilangan bulat dalam himpunan yang saling relatif prima satu sama lain.',
+        formula: 'PBB(a, b) = 1',
+        color: '#a855f7, #ec4899',
+        tags: ['Coprime', 'Teori Bilangan'],
+        slide: 'Slide 12',
+        example: 'Tentukan pasangan relatif prima dari 25, 41, 49, 64.',
+        pdfUrl: 'https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2024-2025/15-Teori-Bilangan-Bagian1-2024.pdf#page=12',
         pdfPageLabel: 'Hal. 12',
       },
     ],
