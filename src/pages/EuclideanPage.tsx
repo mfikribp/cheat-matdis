@@ -82,7 +82,11 @@ export default function EuclideanPage({ onBack }: Props) {
             {/* Quick swap notification */}
             {result.wasSwapped && (
               <div className="swap-banner" style={{ background: 'rgba(52, 211, 153, 0.1)', border: '1px solid rgba(52, 211, 153, 0.3)', padding: '1rem', borderRadius: '0.75rem', color: '#34d399', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ fontSize: '1.25rem' }}>ℹ️</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
                 <span>
                   <strong>Nilai Ditukar:</strong> Karena syarat awal algoritma adalah <code>m ≥ n</code>, nilai <code>m</code> dan <code>n</code> otomatis ditukar agar memenuhi ketentuan.
                 </span>
@@ -99,7 +103,12 @@ export default function EuclideanPage({ onBack }: Props) {
               </div>
               <div style={{ background: 'linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(5, 150, 105, 0.2))', padding: '1rem 2rem', borderRadius: '0.75rem', border: '1px solid rgba(52, 211, 153, 0.3)' }}>
                 <span style={{ display: 'block', fontSize: '0.75rem', color: '#94a3b8', textAlign: 'center' }}>STATUS</span>
-                <span style={{ fontSize: '1.25rem', color: '#34d399', fontWeight: 600, display: 'block', textAlign: 'center' }}>SELESAI ✓</span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', color: '#34d399' }}>
+                  <span style={{ fontSize: '1.25rem', fontWeight: 600 }}>SELESAI</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
               </div>
             </div>
 
@@ -109,7 +118,12 @@ export default function EuclideanPage({ onBack }: Props) {
               {/* Trace Table */}
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ fontSize: '1.2rem', color: '#f8fafc', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  📊 Tabel Penelusuran Variabel (Trace)
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                  </svg>
+                  Tabel Penelusuran Variabel (Trace)
                 </h3>
                 <div style={{ overflowX: 'auto' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
@@ -157,7 +171,13 @@ export default function EuclideanPage({ onBack }: Props) {
               {/* Pseudocode Visualizer */}
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <h3 style={{ fontSize: '1.2rem', color: '#f8fafc', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  📜 Pencocokan Pseudocode
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                  </svg>
+                  Pencocokan Pseudocode
                 </h3>
                 <pre style={{ 
                   background: 'rgba(15, 23, 42, 0.7)', 
@@ -194,7 +214,14 @@ export default function EuclideanPage({ onBack }: Props) {
                   <div style={{ color: '#34d399', fontWeight: 'bold' }}>{`  PBB ← m`}</div>
                 </pre>
                 <div style={{ marginTop: '1rem', fontSize: '0.85rem', color: '#94a3b8' }}>
-                  💡 <strong>Keterangan Eksekusi:</strong>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A5 5 0 0 0 8 8c0 1 .4 2.5 1.5 3.5.7.8 1.3 1.5 1.5 2.5" />
+                      <line x1="9" y1="18" x2="15" y2="18" />
+                      <line x1="10" y1="22" x2="14" y2="22" />
+                    </svg>
+                    <strong>Keterangan Eksekusi:</strong>
+                  </span>
                   {result.steps.length > 0 ? (
                     <p style={{ marginTop: '0.25rem' }}>
                       Loop <code>while</code> berputar sebanyak <strong>{result.steps.length} kali</strong> karena <code>n</code> tidak sama dengan 0 pada awalnya. Setelah iterasi terakhir, <code>n</code> menjadi 0 sehingga keluar loop dan mengembalikan nilai <code>PBB = {result.pbb}</code>.
@@ -211,8 +238,12 @@ export default function EuclideanPage({ onBack }: Props) {
 
             {/* Mathematical Calculations Step by Step */}
             <div className="glass-card">
-              <h3 style={{ fontSize: '1.2rem', color: '#f8fafc', marginBottom: '1.25rem' }}>
-                ✏️ Perhitungan Matematis Terperinci
+              <h3 style={{ fontSize: '1.2rem', color: '#f8fafc', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                  <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z" />
+                </svg>
+                Perhitungan Matematis Terperinci
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {result.steps.map((step, idx) => (

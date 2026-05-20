@@ -135,8 +135,13 @@ export default function KongruensiPage({ onBack }: Props) {
                   ))}
                 </div>
               ) : (
-                <div className="no-solution-banner">
-                  ❌ Tidak ada solusi — GCD({Math.abs(result.a)}, {result.m}) = {result.gcd} tidak membagi {result.b}
+                <div className="no-solution-banner" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                  </svg>
+                  <span>Tidak ada solusi — GCD({Math.abs(result.a)}, {result.m}) = {result.gcd} tidak membagi {result.b}</span>
                 </div>
               )}
 
@@ -259,8 +264,13 @@ export default function KongruensiPage({ onBack }: Props) {
                   </div>
                 </div>
               ) : (
-                <div className="no-solution-banner" style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
-                  ❌ Tidak ada solusi — Moduli tidak memenuhi syarat kekongruenan bersama.
+                <div className="no-solution-banner" style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.4)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                  </svg>
+                  <span>Tidak ada solusi — Moduli tidak memenuhi syarat kekongruenan bersama.</span>
                 </div>
               )}
 
