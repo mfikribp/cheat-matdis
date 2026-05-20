@@ -19,7 +19,8 @@ const PERMUTATIONS: Record<number, number[]> = {
   3: [0, 2, 1],
   4: [0, 2, 1, 3],
   5: [0, 2, 4, 1, 3], // Classic pentagram star sequence
-  6: [0, 2, 4, 1, 3, 5]
+  6: [0, 2, 4, 1, 3, 5],
+  8: [0, 3, 6, 1, 4, 7, 2, 5]
 };
 
 /**
@@ -103,7 +104,7 @@ export function getCircularLayout(
       const angle = (2 * Math.PI * i) / size - Math.PI / 2; // Start from top
       return {
         index: i,
-        label: `v${i + 1}`,
+        label: size === 8 ? String.fromCharCode(65 + i) : `v${i + 1}`,
         degree: degrees[i],
         hasLoop: matrix[i][i] === 1,
         x: cx + r * Math.cos(angle),
@@ -151,7 +152,7 @@ export function getIsomorphicLayout(
       const angle = (2 * Math.PI * targetPos) / size - Math.PI / 2;
       return {
         index: i,
-        label: `u${i + 1}`,
+        label: size === 8 ? String.fromCharCode(65 + i) : `u${i + 1}`,
         degree: degrees[i],
         hasLoop: matrix[i][i] === 1,
         x: cx + r * Math.cos(angle),
